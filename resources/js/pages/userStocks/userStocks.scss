@@ -1,0 +1,31 @@
+.user_stock {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__total {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        &-elem {
+            padding: 0 1em;
+            display: grid;
+            grid-template-columns: 17fr 1fr;
+            grid-column-gap: 0.3em;
+            text-align: end;
+
+            .title {
+                font-weight: bold;
+            }
+
+            .negative {
+                color: #df1818;
+            }
+
+            .positive {
+                color: #39c227;
+            }
+        }
+    }
+}

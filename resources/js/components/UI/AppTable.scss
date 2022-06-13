@@ -1,0 +1,26 @@
+.table-wrapper {
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+    padding: 29px 18px 21px;
+    border-radius: 10px;
+    min-width: 1050px;
+  }
+  .table {
+    min-width: 1020px;
+  }
+  .status-active {
+    color: rgba(147, 147, 147, 1);
+    background: rgba(238, 238, 238, 1);
+    padding: 7px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .span-container {
+    text-align: center;
+  }
+  .is_negative {
+    color: rgb(223, 24, 24);
+  }
+  .is_positive {
+    color: rgb(57, 194, 39);
+  }

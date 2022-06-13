@@ -1,0 +1,41 @@
+.client {
+    &__create {
+        &.wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        &-card {
+            box-shadow: 0px 0px 16px 0px #0000001a;
+            border-radius: 10px;
+
+            &-input {
+                width: 80%;
+                border: 3px solid transparent;
+                transition: 0.5s;
+                outline: none;
+                border-radius: 10px;
+
+                &.error {
+                    &:focus {
+                        border: 3px solid #e02a2ab7;
+                    }
+                }
+                &.icon {
+                    padding-left: 25px;
+                    background: url("https://www.svgrepo.com/show/150190/key.svg") no-repeat left;
+                    background-size: 20px;
+                  }
+                &__wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0.5em;
+                }
+            }
+
+            &-btn__wrapper {
+                padding: 0.5em;
+            }
+        }
+    }
+}

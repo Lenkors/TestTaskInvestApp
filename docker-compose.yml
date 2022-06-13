@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+
+  #Nginx Service
+  nginx:
+    depends_on:
+      - php-fpm
+    image: nginx:alpine
+    deploy:
+        resources:
+            limits:
+              cpus: 0.50
+              memory: 280M
+    volumes:
+      - .:/var/www/laravel:delegated
+      - .docker/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
+      - .docker/nginx/log:/var/log/nginx:cached
+    ports:
+      - "80:80"
+    networks:
+      - invest-app
+
+  #MySQL Service
+  mysql:
+    image: mysql:8.0
+    deploy:
+        resources:
+            limits: 
+              memory: 256M
+    # build: .docker/mysql/mysql8
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: invest_db
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - .docker/mysql/mysql8:/var/lib/mysql'
+      - .docker/mysql/my.cnf:/etc/mysql/conf.d
+      - ./mysql:/etc/mysql
+      - .docker/mysql/mysql-files:/var/lib/mysql-files
+    networks:
+      - invest-app
+    
+  php-fpm:
+    depends_on:
+      - mysql
+    build:
+      context: .docker/php-fpm
+      dockerfile: Dockerfile
+    image: invest-app-php-fpm
+    environment:
+      XDEBUG_REMOTE_ENABLE: 0
+    volumes:
+      - .:/var/www/laravel:delegated
+      - .docker/php-fpm/extra-config.ini:/usr/local/etc/php/conf.d/extra-config.ini:cached
+      - .docker/php-fpm/laravel-schedule:/etc/cron.d/laravel-schedule:cached
+      - ~/.composer/cache:/root/.composer/cache:delegated
+    networks:
+      - invest-app
+
+networks:
+  invest-app:
+    driver: bridge

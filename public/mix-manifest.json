@@ -1,0 +1,10 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/stocks.js": "/js/stocks.js",
+    "/js/stocks_create.js": "/js/stocks_create.js",
+    "/js/clients.js": "/js/clients.js",
+    "/js/buy_stock.js": "/js/buy_stock.js",
+    "/js/clients_create.js": "/js/clients_create.js",
+    "/js/user_stocks.js": "/js/user_stocks.js",
+    "/css/app.css": "/css/app.css"
+}
