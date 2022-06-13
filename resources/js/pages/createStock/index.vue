@@ -64,11 +64,11 @@ export default {
                 this.v$.$errors.forEach(el => {
                     this.toast.warning(`${el.$property} - ${el.$message}`)
                 })
+            } else if (!Number.isInteger(this.stockData.price)) {
+                this.stockData.price = Math.ceil(this.stockData.price)
+                this.toast.warning('The price must be an integer');
             } else {
-                if (Number.isInteger(this.stockData.price)) {
-                    this.stockData.price = Math.ceil(this.stockData.price)
-                    this.toast.warning('The price must be an integer');
-                }
+                
                 this.storeMain.createStock(this.stockData)
                 .then(result => {
                     if (result.status == 201) this.toast.success('Stock successful create'), this.$router.push('/')
